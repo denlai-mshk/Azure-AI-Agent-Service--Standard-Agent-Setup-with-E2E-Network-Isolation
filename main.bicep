@@ -12,6 +12,7 @@ Standard Setup Network Secured Steps for main.bicep
     'norwayeast'
     'southindia'
     'swedencentral'
+    'switzerlandnorth'
     'uaenorth'
     'uksouth'
     'westus'
