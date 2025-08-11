@@ -11,6 +11,23 @@ languages:
 ---
 
 # Azure AI Agent Service: Standard Agent Setup with E2E Network Isolation
+---
+## What this modified version offers
+This is a modified version based on the [original](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples/microsoft/infrastructure-setup/15-private-network-standard-agent-setup) repository. The key changes and features in this version are:
+
+ - Removed the 4-digit random character suffix that is usually appended to newly created resources such as storage accounts, AI Search, Cosmos DB, and AI Foundry resources.
+
+ - As a result, you must provide globally unique names for storage accounts, AI Search, Cosmos DB, and AI Foundry resources.
+
+ - Updated to use regional OpenAI resources with the "Standard" SKU instead of the "GlobalStandard" SKU.
+
+ - Changed the default TPM setting for OpenAI resources from 30 to 10.
+
+To provision a new set of resources, please fill in the fields marked in [GREEN marked items](/createnewresources.png)
+
+Use an existing set of resources, please fill in the fields marked in [RED marked items](/useexistingresources.png)
+
+
 
 > **IMPORTANT**
 > 
