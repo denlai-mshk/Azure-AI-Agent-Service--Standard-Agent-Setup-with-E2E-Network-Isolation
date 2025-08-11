@@ -39,7 +39,7 @@ This implementation gives you full control over the inbound and outbound communi
   - **Note:** Your Virtual Network can be in a different resource group than your Foundry workspace resources 
 
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2Fmain%2Fazuredeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2F2025-06-01%2Fazuredeploy.json)
 
 ---
 
@@ -194,7 +194,7 @@ By bundling these BYO features (file storage, search, and thread storage), the s
 
 Azure AI Foundry (Cognitive Services)
 - Type: Microsoft.CognitiveServices/accounts
-- API version: 2025-04-01-preview
+- API version: 2025-06-01
 - Kind: AIServices
 - SKU: S0
 - Identity: System-assigned
@@ -205,7 +205,7 @@ Azure AI Foundry (Cognitive Services)
 
 AI Model Deployment 
 - Type: Microsoft.CognitiveServices/accounts/deployments 
-- API version: 2025-04-01-preview
+- API version: 2025-06-01
 - SKU: Based on modelSkuName parameter, capacity set by modelCapacity 
 - Model properties:
   - Name: From modelName parameter

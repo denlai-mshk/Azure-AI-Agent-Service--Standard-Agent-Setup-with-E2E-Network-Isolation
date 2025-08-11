@@ -18,7 +18,7 @@ if [ -z "$access_token" ]; then
 fi
 
 # Construct the API URL
-api_url="https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.CognitiveServices/accounts/${account_name}/capabilityHosts/${caphost_name}?api-version=2025-04-01-preview"
+api_url="https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.CognitiveServices/accounts/${account_name}/capabilityHosts/${caphost_name}?api-version=2025-06-01"
 
 echo "Deleting capability host: ${caphost_name}"
 echo "API URL: ${api_url}"

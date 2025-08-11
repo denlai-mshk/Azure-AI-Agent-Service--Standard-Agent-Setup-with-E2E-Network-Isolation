@@ -954,7 +954,7 @@
           "resources": [
             {
               "type": "Microsoft.CognitiveServices/accounts",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[parameters('accountName')]",
               "location": "[parameters('location')]",
               "sku": {
@@ -979,7 +979,7 @@
             },
             {
               "type": "Microsoft.CognitiveServices/accounts/deployments",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[format('{0}/{1}', parameters('accountName'), parameters('modelName'))]",
               "sku": {
                 "capacity": "[parameters('modelCapacity')]",
@@ -1008,11 +1008,11 @@
             },
             "accountTarget": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName')), '2025-04-01-preview').endpoint]"
+              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName')), '2025-06-01').endpoint]"
             },
             "accountPrincipalId": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName')), '2025-04-01-preview', 'full').identity.principalId]"
+              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName')), '2025-06-01', 'full').identity.principalId]"
             }
           }
         }
@@ -1982,7 +1982,7 @@
           "resources": [
             {
               "type": "Microsoft.CognitiveServices/accounts/projects/connections",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[format('{0}/{1}/{2}', parameters('accountName'), parameters('projectName'), parameters('cosmosDBName'))]",
               "properties": {
                 "category": "CosmosDB",
@@ -2000,7 +2000,7 @@
             },
             {
               "type": "Microsoft.CognitiveServices/accounts/projects/connections",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[format('{0}/{1}/{2}', parameters('accountName'), parameters('projectName'), parameters('azureStorageName'))]",
               "properties": {
                 "category": "AzureStorageAccount",
@@ -2018,7 +2018,7 @@
             },
             {
               "type": "Microsoft.CognitiveServices/accounts/projects/connections",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[format('{0}/{1}/{2}', parameters('accountName'), parameters('projectName'), parameters('aiSearchName'))]",
               "properties": {
                 "category": "CognitiveSearch",
@@ -2036,7 +2036,7 @@
             },
             {
               "type": "Microsoft.CognitiveServices/accounts/projects",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[format('{0}/{1}', parameters('accountName'), parameters('projectName'))]",
               "location": "[parameters('location')]",
               "identity": {
@@ -2059,11 +2059,11 @@
             },
             "projectPrincipalId": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts/projects', parameters('accountName'), parameters('projectName')), '2025-04-01-preview', 'full').identity.principalId]"
+              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts/projects', parameters('accountName'), parameters('projectName')), '2025-06-01', 'full').identity.principalId]"
             },
             "projectWorkspaceId": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts/projects', parameters('accountName'), parameters('projectName')), '2025-04-01-preview').internalId]"
+              "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts/projects', parameters('accountName'), parameters('projectName')), '2025-06-01').internalId]"
             },
             "cosmosDBConnection": {
               "type": "string",
@@ -2406,7 +2406,7 @@
           "resources": [
             {
               "type": "Microsoft.CognitiveServices/accounts/projects/capabilityHosts",
-              "apiVersion": "2025-04-01-preview",
+              "apiVersion": "2025-06-01",
               "name": "[format('{0}/{1}/{2}', parameters('accountName'), parameters('projectName'), parameters('projectCapHost'))]",
               "properties": {
                 "capabilityHostKind": "Agents",
