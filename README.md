@@ -56,7 +56,7 @@ This implementation gives you full control over the inbound and outbound communi
   - **Note:** Your Virtual Network can be in a different resource group than your Foundry workspace resources 
 
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2Fmain%2Fazuredeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2Fcustomname%2Fazuredeploy.json)
 
 ---
 
