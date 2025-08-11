@@ -11,7 +11,7 @@
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "australiaeast",
+      "defaultValue": "eastus2",
       "allowedValues": [
         "australiaeast",
         "eastus",
@@ -35,7 +35,7 @@
       "type": "string",
       "defaultValue": "aiservices",
       "metadata": {
-        "description": "Global Unique name for your AI Foundry resource."
+        "description": "Name for your AI Services resource."
       }
     },
     "modelName": {
@@ -68,7 +68,7 @@
     },
     "modelCapacity": {
       "type": "int",
-      "defaultValue": 10,
+      "defaultValue": 30,
       "metadata": {
         "description": "The tokens per minute (TPM) of your model deployment"
       }
@@ -96,27 +96,6 @@
       "defaultValue": "network secured agent project",
       "metadata": {
         "description": "The display name of the project"
-      }
-    },
-    "azureStorageNameparam": {
-      "type": "string",
-      "defaultValue": "newstorageaccount",
-      "metadata": {
-        "description": "Global Unique name for your storage account resource."
-      }
-    },
-    "cosmosDBNameparam": {
-      "type": "string",
-      "defaultValue": "newcosmosdb",
-      "metadata": {
-        "description": "Global Unique name for your CosmosDB resource."
-      }
-    },
-    "aiSearchNameparam": {
-      "type": "string",
-      "defaultValue": "newaisearch",
-      "metadata": {
-        "description": "Global Unique name for your AI Search resource."
       }
     },
     "vnetName": {
@@ -199,11 +178,11 @@
   },
   "variables": {
     "uniqueSuffix": "[substring(uniqueString(format('{0}-{1}', resourceGroup().id, parameters('deploymentTimestamp'))), 0, 4)]",
-    "accountName": "[toLower(format('{0}', parameters('aiServices')))]",
-    "projectName": "[toLower(format('{0}', parameters('firstProjectName')))]",
-    "cosmosDBName": "[toLower(format('{0}', parameters('cosmosDBNameparam')))]",
-    "aiSearchName": "[toLower(format('{0}', parameters('aiSearchNameparam')))]",
-    "azureStorageName": "[toLower(format('{0}', parameters('azureStorageNameparam')))]",
+    "accountName": "[toLower(format('{0}{1}', parameters('aiServices'), variables('uniqueSuffix')))]",
+    "projectName": "[toLower(format('{0}{1}', parameters('firstProjectName'), variables('uniqueSuffix')))]",
+    "cosmosDBName": "[toLower(format('{0}{1}cosmosdb', parameters('aiServices'), variables('uniqueSuffix')))]",
+    "aiSearchName": "[toLower(format('{0}{1}search', parameters('aiServices'), variables('uniqueSuffix')))]",
+    "azureStorageName": "[toLower(format('{0}{1}storage', parameters('aiServices'), variables('uniqueSuffix')))]",
     "storagePassedIn": "[not(equals(parameters('azureStorageAccountResourceId'), ''))]",
     "searchPassedIn": "[not(equals(parameters('aiSearchResourceId'), ''))]",
     "cosmosPassedIn": "[not(equals(parameters('azureCosmosDBAccountResourceId'), ''))]",
