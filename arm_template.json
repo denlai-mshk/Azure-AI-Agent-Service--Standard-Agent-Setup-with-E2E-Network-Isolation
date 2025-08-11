@@ -11,7 +11,7 @@
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "australiaeast",
+      "defaultValue": "eastus2",
       "allowedValues": [
         "australiaeast",
         "eastus",
@@ -35,7 +35,7 @@
       "type": "string",
       "defaultValue": "aiservices",
       "metadata": {
-        "description": "Global Unique name for your AI Foundry resource."
+        "description": "Name for your AI Services resource."
       }
     },
     "modelName": {
@@ -79,7 +79,7 @@
     },
     "firstProjectName": {
       "type": "string",
-      "defaultValue": "project",
+      "defaultValue": "firstproject",
       "metadata": {
         "description": "Name for your project resource."
       }
@@ -102,21 +102,21 @@
       "type": "string",
       "defaultValue": "newstorageaccount",
       "metadata": {
-        "description": "Global Unique name for your storage account resource."
+        "description": "Name for your storage account resource."
       }
     },
     "cosmosDBNameparam": {
       "type": "string",
       "defaultValue": "newcosmosdb",
       "metadata": {
-        "description": "Global Unique name for your CosmosDB resource."
+        "description": "Name for your CosmosDB resource."
       }
     },
     "aiSearchNameparam": {
       "type": "string",
       "defaultValue": "newaisearch",
       "metadata": {
-        "description": "Global Unique name for your AI Search resource."
+        "description": "Name for your AI Search resource."
       }
     },
     "vnetName": {
