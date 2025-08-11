@@ -61,7 +61,7 @@
     },
     "modelSkuName": {
       "type": "string",
-      "defaultValue": "Standard",
+      "defaultValue": "GlobalStandard",
       "metadata": {
         "description": "The sku of your model deployment"
       }
