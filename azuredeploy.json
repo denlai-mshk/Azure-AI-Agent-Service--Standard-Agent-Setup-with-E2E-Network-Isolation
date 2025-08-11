@@ -62,14 +62,14 @@
     },
     "modelSkuName": {
       "type": "string",
-      "defaultValue": "GlobalStandard",
+      "defaultValue": "Standard",
       "metadata": {
         "description": "The sku of your model deployment"
       }
     },
     "modelCapacity": {
       "type": "int",
-      "defaultValue": 30,
+      "defaultValue": 10,
       "metadata": {
         "description": "The tokens per minute (TPM) of your model deployment"
       }

@@ -32,7 +32,7 @@ param modelFormat string = 'OpenAI'
 @description('The version of your model')
 param modelVersion string = '2024-11-20'
 @description('The sku of your model deployment')
-param modelSkuName string = 'GlobalStandard'
+param modelSkuName string = 'Standard'
 @description('The tokens per minute (TPM) of your model deployment')
 param modelCapacity int = 10
 

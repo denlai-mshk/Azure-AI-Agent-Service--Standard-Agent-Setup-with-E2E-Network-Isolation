@@ -16,11 +16,9 @@ languages:
 This is a modified version based on the [original](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples/microsoft/infrastructure-setup/15-private-network-standard-agent-setup) repository. The key changes and features in this version are:
 
  - Removed the 4-digit random character suffix that is usually appended to newly created resources such as storage accounts, AI Search, Cosmos DB, and AI Foundry resources.
-
- - As a result, you must provide globally unique names for storage accounts, AI Search, Cosmos DB, and AI Foundry resources.
-
+ - As a result, you must provide globally unique names for storage accounts, AI Search, Cosmos DB, and AI Foundry resources in a case that you expect the BICEP provision a new set of resources for you.
  - Updated to use regional OpenAI resources with the "Standard" SKU instead of the "GlobalStandard" SKU.
-
+ - If you reuse an existing VNET, you have to set the agent-subnet with subjnet delegation = "Microsoft.App/environments" before you execute this BICEP
  - Changed the default TPM setting for OpenAI resources from 30 to 10.
 
 To provision a new set of resources, please fill in the fields marked in [GREEN marked items](/createnewresources.png)
