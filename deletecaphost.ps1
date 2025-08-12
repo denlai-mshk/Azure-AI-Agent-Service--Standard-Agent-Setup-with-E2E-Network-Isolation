@@ -36,7 +36,7 @@ Write-Output "Account Name: $accountName"
 Write-Output "CapabilityHost Name: '$caphostName'"
 
 # Construct the API URL with proper variable boundary for interpolation
-$apiUrl = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.CognitiveServices/accounts/$accountName/capabilityHosts/${caphostName}?api-version=2025-06-01"
+$apiUrl = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.CognitiveServices/accounts/$accountName/capabilityHosts/${caphostName}?api-version=2025-04-01-preview"
 
 Write-Output "Deleting capability host: $caphostName"
 Write-Output "API URL: $apiUrl"
