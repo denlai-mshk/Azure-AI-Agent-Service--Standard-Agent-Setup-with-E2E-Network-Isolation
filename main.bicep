@@ -39,10 +39,21 @@ param modelCapacity int = 10
 // Create a short, unique suffix, that will be unique to each resource group
 param deploymentTimestamp string = utcNow('yyyyMMddHHmmss')
 var uniqueSuffix = substring(uniqueString('${resourceGroup().id}-${deploymentTimestamp}'), 0, 4)
-var accountName = toLower('${aiServices}${uniqueSuffix}')
+// var accountName = toLower('${aiServices}${uniqueSuffix}')
+@description('Global Unique name for your AI Foundry resource.')
+var accountName = toLower('${aiServices}')
 
 @description('Name for your project resource.')
 param firstProjectName string = 'project'
+
+@description('Global Unique name for your storage account resource.')
+param azureStorageNameparam string = 'newstorageaccount'
+
+@description('Global Unique name for your CosmosDB resource.')
+param cosmosDBNameparam string = 'newcosmosdb'
+
+@description('Global Unique name for your AI Search resource.')
+param aiSearchNameparam string = 'newaisearch'
 
 @description('This project will be a sub-resource of your account')
 param projectDescription string = 'A project for the AI Foundry account with network secured deployed Agent'
@@ -91,10 +102,14 @@ param existingDnsZones object
 param dnsZoneNames array
 
 
-var projectName = toLower('${firstProjectName}${uniqueSuffix}')
-var cosmosDBName = toLower('${aiServices}${uniqueSuffix}cosmosdb')
-var aiSearchName = toLower('${aiServices}${uniqueSuffix}search')
-var azureStorageName = toLower('${aiServices}${uniqueSuffix}storage')
+// var projectName = toLower('${firstProjectName}${uniqueSuffix}')
+// var cosmosDBName = toLower('${aiServices}${uniqueSuffix}cosmosdb')
+// var aiSearchName = toLower('${aiServices}${uniqueSuffix}search')
+// var azureStorageName = toLower('${aiServices}${uniqueSuffix}storage')
+var projectName = toLower('${firstProjectName}')
+var cosmosDBName = toLower('${cosmosDBNameparam}')
+var aiSearchName = toLower('${aiSearchNameparam}')
+var azureStorageName = toLower('${azureStorageNameparam}')
 
 // Check if existing resources have been passed in
 var storagePassedIn = azureStorageAccountResourceId != ''

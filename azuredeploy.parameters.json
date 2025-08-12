@@ -35,6 +35,15 @@
     "displayName": {
       "value": ""
     },
+    "azureStorageNameparam": {
+      "value": ""
+    },
+    "cosmosDBNameparam": {
+      "value": ""
+    },
+    "aiSearchNameparam": {
+      "value": ""
+    },            
     "vnetName": {
       "value": ""
     },

@@ -11,7 +11,6 @@ languages:
 ---
 
 # Azure AI Agent Service: Standard Agent Setup with E2E Network Isolation
-
 ---
 ## What this modified version offers
 This is a modified version based on the [original](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples/microsoft/infrastructure-setup/15-private-network-standard-agent-setup) repository. The key changes and features in this version are:
@@ -32,6 +31,7 @@ You won't have to have an environment for running the Azure CLI and BICEP. Just 
 [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2Fmain%2Fazuredeploy.json)
 
 ---
+
 > **IMPORTANT**
 > 
 > Class A subnet support is only available in a limited number of regions and requires your subscription id be allowlisted. Please reach out to fosteramanda@microsoft.com if you are interested in getting access.

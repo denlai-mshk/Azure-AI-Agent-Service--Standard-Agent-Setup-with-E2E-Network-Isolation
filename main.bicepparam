@@ -9,8 +9,11 @@ param modelSkuName = 'Standard'
 param modelCapacity = 10
 param firstProjectName = 'firstproject'
 param projectDescription = 'A project for the AI Foundry account with network secured deployed Agent'
-param displayName = 'project'
+param displayName = 'network secured agent project'
 param peSubnetName = 'pe-subnet'
+param azureStorageNameparam = 'newstorageaccount'
+param cosmosDBNameparam = 'newcosmosdb'
+param aiSearchNameparam = 'newaisearch'
 
 // Resource IDs for existing resources
 // If you provide these, the deployment will use the existing resources instead of creating new ones
