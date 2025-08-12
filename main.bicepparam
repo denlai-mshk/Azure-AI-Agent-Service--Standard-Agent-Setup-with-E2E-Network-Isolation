@@ -1,6 +1,6 @@
 using './main.bicep'
 
-param location = 'australiaeast'
+param location = 'eastus2'
 param aiServices = 'aiservices'
 param modelName = 'gpt-4o'
 param modelFormat = 'OpenAI'
@@ -9,11 +9,8 @@ param modelSkuName = 'Standard'
 param modelCapacity = 10
 param firstProjectName = 'firstproject'
 param projectDescription = 'A project for the AI Foundry account with network secured deployed Agent'
-param displayName = 'network secured agent project'
+param displayName = 'project'
 param peSubnetName = 'pe-subnet'
-param azureStorageNameparam = 'newstorageaccount'
-param cosmosDBNameparam = 'newcosmosdb'
-param aiSearchNameparam = 'newaisearch'
 
 // Resource IDs for existing resources
 // If you provide these, the deployment will use the existing resources instead of creating new ones
