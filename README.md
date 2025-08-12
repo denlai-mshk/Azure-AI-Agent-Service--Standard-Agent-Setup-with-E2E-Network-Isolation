@@ -11,7 +11,6 @@ languages:
 ---
 
 # Azure AI Agent Service: Standard Agent Setup with E2E Network Isolation
-
 ---
 ## What this modified version offers
 This is a modified version based on the [original](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples/microsoft/infrastructure-setup/15-private-network-standard-agent-setup) repository. The key changes and features in this version are:
@@ -26,7 +25,8 @@ To provision a new set of resources, please fill in the fields marked in [GREEN 
 
 Use an existing set of resources, please fill in the fields marked in [RED marked items](/useexistingresources.png)
 
----
+
+
 > **IMPORTANT**
 > 
 > Class A subnet support is only available in a limited number of regions and requires your subscription id be allowlisted. Please reach out to fosteramanda@microsoft.com if you are interested in getting access.
