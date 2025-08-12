@@ -1,6 +1,6 @@
 using './main.bicep'
 
-param location = 'eastus2'
+param location = 'australiaeast'
 param aiServices = 'aiservices'
 param modelName = 'gpt-4o'
 param modelFormat = 'OpenAI'

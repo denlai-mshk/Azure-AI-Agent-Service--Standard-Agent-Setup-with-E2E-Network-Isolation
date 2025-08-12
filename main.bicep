@@ -19,7 +19,7 @@ Standard Setup Network Secured Steps for main.bicep
     'westus3'
     'westus2'
   ])
-param location string = 'eastus2'
+param location string = 'australiaeast'
 
 @description('Name for your AI Services resource.')
 param aiServices string = 'aiservices'
@@ -34,7 +34,7 @@ param modelVersion string = '2024-11-20'
 @description('The sku of your model deployment')
 param modelSkuName string = 'Standard'
 @description('The tokens per minute (TPM) of your model deployment')
-param modelCapacity int = 30
+param modelCapacity int = 10
 
 // Create a short, unique suffix, that will be unique to each resource group
 param deploymentTimestamp string = utcNow('yyyyMMddHHmmss')
