@@ -20,6 +20,7 @@ This is a modified version based on the [original](https://github.com/azure-ai-f
  - Updated to use regional OpenAI resources with the "Standard" SKU instead of the "GlobalStandard" SKU.
  - If you reuse an existing VNET, you have to set the agent-subnet with subjnet delegation = "Microsoft.App/environments" before you execute this BICEP
  - Changed the default TPM setting for OpenAI resources from 30 to 10.
+ - Patch the 2nd or latter project for capability host
 
 To provision a new set of resources, please fill in the fields marked in [GREEN marked items](/createnewresources.png)
 
@@ -29,6 +30,12 @@ Use an existing set of resources, please fill in the fields marked in [RED marke
 You won't have to have an environment for running the Azure CLI and BICEP. Just click this button to deploy on your subscription directly via ARM template. 
 
 [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2Fmain%2Fazuredeploy.json)
+
+**2nd or latter projects**
+You can enter the AI Foundry Management Center to add 2nd more latter project. After that, you need to execute this ARM template to patch your project with the capability host among AI Search, CosmosDB, Storage account.
+
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2Fmain%2Fadd2ndproject.json)
+
 
 ---
 
