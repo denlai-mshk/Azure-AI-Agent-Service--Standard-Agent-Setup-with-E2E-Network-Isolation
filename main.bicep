@@ -216,7 +216,7 @@ resource cosmosDB 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' existing = 
 /*
   Create the AI Services account and gpt-4o model deployment
 */
-module aiAccount 'modules-network-secured/ai-account-identity-connection.bicep' = {
+module aiAccount 'modules-network-secured/ai-account-identity.bicep' = {
   name: 'ai-${accountName}-${uniqueSuffix}-deployment'
   params: {
     // workspace organization
@@ -228,23 +228,7 @@ module aiAccount 'modules-network-secured/ai-account-identity-connection.bicep' 
     modelSkuName: modelSkuName
     modelCapacity: modelCapacity
     agentSubnetId: vnet.outputs.agentSubnetId
-    aiSearchName: aiDependencies.outputs.aiSearchName
-    aiSearchServiceResourceGroupName: aiDependencies.outputs.aiSearchServiceResourceGroupName
-    aiSearchServiceSubscriptionId: aiDependencies.outputs.aiSearchServiceSubscriptionId
-
-    cosmosDBName: aiDependencies.outputs.cosmosDBName
-    cosmosDBSubscriptionId: aiDependencies.outputs.cosmosDBSubscriptionId
-    cosmosDBResourceGroupName: aiDependencies.outputs.cosmosDBResourceGroupName
-
-    azureStorageName: aiDependencies.outputs.azureStorageName
-    azureStorageSubscriptionId: aiDependencies.outputs.azureStorageSubscriptionId
-    azureStorageResourceGroupName: aiDependencies.outputs.azureStorageResourceGroupName    
   }
-  dependsOn: [
-    aiSearch      // Ensure AI Search exists
-    storage       // Ensure Storage exists
-    cosmosDB      // Ensure Cosmos DB exists
-  ]
 }
 
 // Private Endpoint and DNS Configuration
@@ -274,7 +258,6 @@ module privateEndpointAndDNS 'modules-network-secured/private-endpoint-and-dns.b
       existingDnsZones: existingDnsZones
     }
     dependsOn: [
-    aiAccount
     aiSearch      // Ensure AI Search exists
     storage       // Ensure Storage exists
     cosmosDB      // Ensure Cosmos DB exists
@@ -354,7 +337,7 @@ module aiSearchRoleAssignments 'modules-network-secured/ai-search-role-assignmen
     privateEndpointAndDNS
   ]
 }
-
+/*
 // This module creates the capability host for the project and account
 module addAccountCapabilityHost 'modules-network-secured/add-account-capability-host.bicep' = {
   name: 'capabilityHost-configuration-${uniqueSuffix}-deployment'
@@ -405,3 +388,4 @@ dependsOn: [
   storageContainersRoleAssignment
   ]
 }
+*/
