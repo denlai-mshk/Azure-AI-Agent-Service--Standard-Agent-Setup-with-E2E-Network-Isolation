@@ -29,7 +29,7 @@ Use an existing set of resources, please fill in the fields marked in [RED marke
 
 You won't have to have an environment for running the Azure CLI and BICEP. Just click this button to deploy on your subscription directly via ARM template. 
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2F2ndproj.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2F2ndproj%2Fazuredeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdenlai-mshk%2FAzure-AI-Agent-Service--Standard-Agent-Setup-with-E2E-Network-Isolation%2F2ndproj%2Fazuredeploy.json)
 
 
 ---
