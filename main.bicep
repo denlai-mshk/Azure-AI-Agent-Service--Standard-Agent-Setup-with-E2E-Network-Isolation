@@ -136,8 +136,8 @@ var vnetResourceGroupName = existingVnetPassedIn ? vnetParts[4] : resourceGroup(
 var existingVnetName = existingVnetPassedIn ? last(vnetParts) : vnetName
 var trimVnetName = trim(existingVnetName)
 
-@description('The name of the project capability host to be created')
-param projectCapHost string = 'caphostproj'
+@description('The name of the account capability host to be created')
+param accountCapHost string = 'caphostaccount'
 
 // Create Virtual Network and Subnets
 module vnet 'modules-network-secured/network-agent-vnet.bicep' = {
@@ -348,15 +348,14 @@ module aiSearchRoleAssignments 'modules-network-secured/ai-search-role-assignmen
 }
 
 // This module creates the capability host for the project and account
-module addProjectCapabilityHost 'modules-network-secured/add-project-capability-host.bicep' = {
+module addAccountCapabilityHost 'modules-network-secured/add-account-capability-host.bicep' = {
   name: 'capabilityHost-configuration-${uniqueSuffix}-deployment'
   params: {
     accountName: aiAccount.outputs.accountName
-    projectName: aiProject.outputs.projectName
     cosmosDBConnection: aiProject.outputs.cosmosDBConnection
     azureStorageConnection: aiProject.outputs.azureStorageConnection
     aiSearchConnection: aiProject.outputs.aiSearchConnection
-    projectCapHost: projectCapHost
+    accountCapHost: accountCapHost
   }
   dependsOn: [
      aiSearch      // Ensure AI Search exists
