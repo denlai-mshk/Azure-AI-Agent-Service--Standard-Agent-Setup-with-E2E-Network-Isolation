@@ -156,23 +156,7 @@ module vnet 'modules-network-secured/network-agent-vnet.bicep' = {
   }
 }
 
-/*
-  Create the AI Services account and gpt-4o model deployment
-*/
-module aiAccount 'modules-network-secured/ai-account-identity.bicep' = {
-  name: 'ai-${accountName}-${uniqueSuffix}-deployment'
-  params: {
-    // workspace organization
-    accountName: accountName
-    location: location
-    modelName: modelName
-    modelFormat: modelFormat
-    modelVersion: modelVersion
-    modelSkuName: modelSkuName
-    modelCapacity: modelCapacity
-    agentSubnetId: vnet.outputs.agentSubnetId
-  }
-}
+
 /*
   Validate existing resources
   This module will check if the AI Search Service, Storage Account, and Cosmos DB Account already exist.
@@ -229,6 +213,40 @@ resource cosmosDB 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' existing = 
   scope: resourceGroup(cosmosDBSubscriptionId, cosmosDBResourceGroupName)
 }
 
+/*
+  Create the AI Services account and gpt-4o model deployment
+*/
+module aiAccount 'modules-network-secured/ai-account-identity-connection.bicep' = {
+  name: 'ai-${accountName}-${uniqueSuffix}-deployment'
+  params: {
+    // workspace organization
+    accountName: accountName
+    location: location
+    modelName: modelName
+    modelFormat: modelFormat
+    modelVersion: modelVersion
+    modelSkuName: modelSkuName
+    modelCapacity: modelCapacity
+    agentSubnetId: vnet.outputs.agentSubnetId
+    aiSearchName: aiDependencies.outputs.aiSearchName
+    aiSearchServiceResourceGroupName: aiDependencies.outputs.aiSearchServiceResourceGroupName
+    aiSearchServiceSubscriptionId: aiDependencies.outputs.aiSearchServiceSubscriptionId
+
+    cosmosDBName: aiDependencies.outputs.cosmosDBName
+    cosmosDBSubscriptionId: aiDependencies.outputs.cosmosDBSubscriptionId
+    cosmosDBResourceGroupName: aiDependencies.outputs.cosmosDBResourceGroupName
+
+    azureStorageName: aiDependencies.outputs.azureStorageName
+    azureStorageSubscriptionId: aiDependencies.outputs.azureStorageSubscriptionId
+    azureStorageResourceGroupName: aiDependencies.outputs.azureStorageResourceGroupName    
+  }
+  dependsOn: [
+    aiSearch      // Ensure AI Search exists
+    storage       // Ensure Storage exists
+    cosmosDB      // Ensure Cosmos DB exists
+  ]
+}
+
 // Private Endpoint and DNS Configuration
 // This module sets up private network access for all Azure services:
 // 1. Creates private endpoints in the specified subnet
@@ -256,6 +274,7 @@ module privateEndpointAndDNS 'modules-network-secured/private-endpoint-and-dns.b
       existingDnsZones: existingDnsZones
     }
     dependsOn: [
+    aiAccount
     aiSearch      // Ensure AI Search exists
     storage       // Ensure Storage exists
     cosmosDB      // Ensure Cosmos DB exists
@@ -265,7 +284,7 @@ module privateEndpointAndDNS 'modules-network-secured/private-endpoint-and-dns.b
 /*
   Creates a new project (sub-resource of the AI Services account)
 */
-module aiProject 'modules-network-secured/ai-project-identity.bicep' = {
+module aiProject 'modules-network-secured/ai-project-noconnection.bicep' = {
   name: 'ai-${projectName}-${uniqueSuffix}-deployment'
   params: {
     // workspace organization
@@ -274,17 +293,6 @@ module aiProject 'modules-network-secured/ai-project-identity.bicep' = {
     displayName: displayName
     location: location
 
-    aiSearchName: aiDependencies.outputs.aiSearchName
-    aiSearchServiceResourceGroupName: aiDependencies.outputs.aiSearchServiceResourceGroupName
-    aiSearchServiceSubscriptionId: aiDependencies.outputs.aiSearchServiceSubscriptionId
-
-    cosmosDBName: aiDependencies.outputs.cosmosDBName
-    cosmosDBSubscriptionId: aiDependencies.outputs.cosmosDBSubscriptionId
-    cosmosDBResourceGroupName: aiDependencies.outputs.cosmosDBResourceGroupName
-
-    azureStorageName: aiDependencies.outputs.azureStorageName
-    azureStorageSubscriptionId: aiDependencies.outputs.azureStorageSubscriptionId
-    azureStorageResourceGroupName: aiDependencies.outputs.azureStorageResourceGroupName
     // dependent resources
     accountName: aiAccount.outputs.accountName
   }
@@ -378,7 +386,7 @@ module storageContainersRoleAssignment 'modules-network-secured/blob-storage-con
     workspaceId: formatProjectWorkspaceId.outputs.projectWorkspaceIdGuid
   }
   dependsOn: [
-    addProjectCapabilityHost
+    addAccountCapabilityHost
   ]
 }
 
@@ -393,7 +401,7 @@ module cosmosContainerRoleAssignments 'modules-network-secured/cosmos-container-
 
   }
 dependsOn: [
-  addProjectCapabilityHost
+  addAccountCapabilityHost
   storageContainersRoleAssignment
   ]
 }
