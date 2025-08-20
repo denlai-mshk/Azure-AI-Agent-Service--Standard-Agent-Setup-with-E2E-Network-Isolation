@@ -265,7 +265,7 @@ module privateEndpointAndDNS 'modules-network-secured/private-endpoint-and-dns.b
 /*
   Creates a new project (sub-resource of the AI Services account)
 */
-module aiProject 'modules-network-secured/ai-project-noconnection.bicep' = {
+module aiProject 'modules-network-secured/ai-project-identity.bicep' = {
   name: 'ai-${projectName}-${uniqueSuffix}-deployment'
   params: {
     // workspace organization
@@ -274,6 +274,17 @@ module aiProject 'modules-network-secured/ai-project-noconnection.bicep' = {
     displayName: displayName
     location: location
 
+    aiSearchName: aiDependencies.outputs.aiSearchName
+    aiSearchServiceResourceGroupName: aiDependencies.outputs.aiSearchServiceResourceGroupName
+    aiSearchServiceSubscriptionId: aiDependencies.outputs.aiSearchServiceSubscriptionId
+
+    cosmosDBName: aiDependencies.outputs.cosmosDBName
+    cosmosDBSubscriptionId: aiDependencies.outputs.cosmosDBSubscriptionId
+    cosmosDBResourceGroupName: aiDependencies.outputs.cosmosDBResourceGroupName
+
+    azureStorageName: aiDependencies.outputs.azureStorageName
+    azureStorageSubscriptionId: aiDependencies.outputs.azureStorageSubscriptionId
+    azureStorageResourceGroupName: aiDependencies.outputs.azureStorageResourceGroupName
     // dependent resources
     accountName: aiAccount.outputs.accountName
   }
