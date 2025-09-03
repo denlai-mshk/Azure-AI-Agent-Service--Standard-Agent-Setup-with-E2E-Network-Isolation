@@ -190,11 +190,11 @@
         "description": "The Cosmos DB Account full ARM Resource ID. This is an optional field, and if not provided, the resource will be created."
       }
     },
-    "projectCapHost": {
+    "accountCapHost": {
       "type": "string",
-      "defaultValue": "caphostproj",
+      "defaultValue": "caphostacct",
       "metadata": {
-        "description": "The name of the project capability host to be created"
+        "description": "The name of the account-level capability host to be created"
       }
     }
   },
@@ -2379,8 +2379,8 @@
           "aiSearchConnection": {
             "value": "[reference(resourceId('Microsoft.Resources/deployments', format('ai-{0}-{1}-deployment', variables('projectName'), variables('uniqueSuffix'))), '2022-09-01').outputs.aiSearchConnection.value]"
           },
-          "projectCapHost": {
-            "value": "[parameters('projectCapHost')]"
+          "accountCapHost": {
+            "value": "[parameters('accountCapHost')]"
           }
         },
         "template": {
@@ -2409,7 +2409,7 @@
             "accountName": {
               "type": "string"
             },
-            "projectCapHost": {
+            "accountCapHost": {
               "type": "string"
             }
           },
@@ -2426,9 +2426,9 @@
           },
           "resources": [
             {
-              "type": "Microsoft.CognitiveServices/accounts/projects/capabilityHosts",
+              "type": "Microsoft.CognitiveServices/accounts/capabilityHosts",
               "apiVersion": "2025-04-01-preview",
-              "name": "[format('{0}/{1}/{2}', parameters('accountName'), parameters('projectName'), parameters('projectCapHost'))]",
+              "name": "[format('{0}/{1}', parameters('accountName'), parameters('accountCapHost'))]",
               "properties": {
                 "capabilityHostKind": "Agents",
                 "vectorStoreConnections": "[variables('vectorStoreConnections')]",
@@ -2438,9 +2438,9 @@
             }
           ],
           "outputs": {
-            "projectCapHost": {
+            "accountCapHost": {
               "type": "string",
-              "value": "[parameters('projectCapHost')]"
+              "value": "[parameters('accountCapHost')]"
             }
           }
         }
